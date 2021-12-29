@@ -84,6 +84,20 @@ public class DB {
 
 	}
 
+	public static void closeConnection() {
+
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO: handle exception
+				throw new DbException(e.getMessage());
+			}
+		}
+		System.out.println("Desconectado!");
+
+	}
+
 	private static Properties loadProperties() {
 		try (FileInputStream fs = new FileInputStream("db.properties")) {
 			Properties properties = new Properties();
