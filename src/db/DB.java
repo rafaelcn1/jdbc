@@ -84,6 +84,30 @@ public class DB {
 
 	}
 
+	public static void closeConnection(ResultSet rs, PreparedStatement ps) {
+
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				throw new DbException(e.getMessage());
+			}
+		}
+
+		if (ps != null) {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+				// TODO: handle exception
+				throw new DbException(e.getMessage());
+			}
+		}
+
+		System.out.println("Desconectado!");
+
+	}
+
 	public static void closeConnection() {
 
 		if (conn != null) {
