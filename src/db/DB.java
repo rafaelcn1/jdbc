@@ -80,7 +80,18 @@ public class DB {
 			}
 		}
 
-		System.out.println("Desconectado!");
+	}
+
+	public static void closeConnection(PreparedStatement ps) {
+
+		if (ps != null) {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+				// TODO: handle exception
+				throw new DbException(e.getMessage());
+			}
+		}
 
 	}
 
